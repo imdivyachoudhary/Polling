@@ -18,3 +18,12 @@ app.listen(port, (err) => {
   }
   console.log(`App listening on port : ${port}`);
 });
+
+app.use(function (req, res, next) {
+  res.status(404).json({
+    message: "Route not found",
+  });
+  // res.status(404);
+  // res.json({ status: 404, title: "Not Found", msg: "Route not found" });
+  next();
+});
