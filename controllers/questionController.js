@@ -112,12 +112,22 @@ module.exports.createOption = async (req, res) => {
       });
     }
 
+    let question = await Question.findById(req.params.id);
+
+    if (!question) {
+      return res.status(400).json({
+        error: {
+          message:
+            "Question id is Invalid or the Question might have been Deleted",
+        },
+      });
+    }
+
     let option = await Option.create({
       option: req.body.option,
       question: req.params.id,
     });
 
-    let question = await Question.findById(req.params.id);
     await question.options.push(option);
     await question.save();
 
