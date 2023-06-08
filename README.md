@@ -8,6 +8,7 @@ In Postman set environment variable:-
 Or else: 
   Clone the repository in your local system and run the follwing command in project directory:-
     npm install
+    npm start
   Now in Postman set environment variable:-
     base_url : http://localhost:8000
   
